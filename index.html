@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciclaje Sostenible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff5722;
+            --secondary: #4CAF50;
+            --accent: #2196F3;
+            --light: #e0f7fa;
+            --dark: #333;
+            --card-bg: rgba(241, 248, 233, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        header {
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: backgroundChange 10s infinite alternate; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes backgroundChange {
+            0% { background-color: var(--primary); } 
+            25% { background-color: #ff9800; } 
+            50% { background-color: #ffc107; }
+            75% { background-color: #ffeb3b; } 
+            100% { background-color: #cddc39; } 
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            animation: pulse 1.5s infinite;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                color: #ffffff;
+            }
+            50% {
+                transform: scale(1.05);
+                color: #ffeb3b;
+            }
+        }
+        
+        .intro-video {
+            margin: 25px auto;
+            display: block;
+            width: 500px;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+        
+        nav {
+            margin: 20px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin: 8px 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.3);
+            color: #333;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 30px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .media-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        /* Imágenes más pequeñas (solo imágenes, no videos) */
+        .media-container img {
+            width: 300px;  /* Tamaño reducido */
+            height: 300px; /* Tamaño reducido */
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 3px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .media-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* Videos mantienen tamaño original */
+        .media-container video {
+            width: 300px;  /* Tamaño original */
+            height: 300px; /* Tamaño original */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #000;
+            transition: all 0.3s ease;
+        }
+        
+        .media-container video:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        
+        .content-container {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-color: var(--secondary);
+        }
+        
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .benefits-list {
+            padding-left: 30px;
+            margin: 25px 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 35px;
+        }
+        
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .social-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin: 0 15px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: var(--accent);
+        }
+        
+        .social-icons i {
+            color: white;
+            font-size: 28px;
+        }
+        
+        .support-links {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .support-links li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .support-links li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .support-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 5px 0;
+        }
+        
+        .support-links a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--primary);
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 1.1rem;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .eco-icon {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .eco-icon:nth-child(1) { top: 20px; left: 5%; }
+        .eco-icon:nth-child(2) { top: 50px; right: 10%; }
+        .eco-icon:nth-child(3) { bottom: 30px; left: 15%; }
+        .eco-icon:nth-child(4) { bottom: 40px; right: 20%; }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .media-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .media-container img,
+            .media-container video {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="eco-icon fas fa-recycle"></i>
+        <i class="eco-icon fas fa-leaf"></i>
+        <i class="eco-icon fas fa-globe-americas"></i>
+        <i class="eco-icon fas fa-seedling"></i>
+        
+        <div class="header-content">
+            <h1>¡Recicla para un Futuro Sostenible!</h1>
+            <video class="intro-video" src="slogan.mp4" controls></video>
+            <h3> ¡REDUCE, RECICLA, Y REUTILIZA UNA LECCIÓN QUE NUNCA SE OLVIDA!</h3>
+            <nav>
+                <ul>
+                    <li><a href="#importancia"><i class="fas fa-info-circle"></i> Importancia</a></li>
+                    <li><a href="#tipos"><i class="fas fa-recycle"></i> Tipos de Reciclaje</a></li>
+                    <li><a href="#beneficios"><i class="fas fa-chart-line"></i> Beneficios</a></li>
+                    <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li><a href="#apoyo"><i class="fas fa-link"></i> Páginas de Apoyo</a></li>
+                    <li><a href="#video"><i class="fas fa-video"></i> Video</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="importancia">
+        <h2>¿Por qué es Importante Reciclar?</h2>
+        
+        <div class="media-container">
+            <img src="gifreciclaje6.gif" alt="GIF sobre reciclaje">
+            <video src="Reciclajetatis.mp4" controls></video>
+        </div>
+       
+        <div class="content-container">  
+            <p>El reciclaje ayuda a reducir la cantidad de basura que generamos, conserva recursos naturales y ahorra energía. Además, juega un papel crucial en la protección del medio ambiente y la lucha contra el cambio climático.</p>
+        </div>
+        
+        <p>Al reciclar, se disminuye la demanda de materias primas, lo que a su vez reduce la deforestación y la contaminación del agua y del aire. También, el reciclaje contribuye a la economía circular, donde los materiales se reutilizan y se mantienen en uso el mayor tiempo posible.</p>
+        
+        <p>En resumen, reciclar no solo beneficia al planeta, sino también a nuestras comunidades y economías locales. Cada acción cuenta, y al reciclar, estamos invirtiendo en un futuro más limpio y saludable para las próximas generaciones.</p>
+        
+        <div class="media-container">
+            <video src="Reciclajejose.mp4" controls></video>
+            <img src="reciclaje5jaja.jpg" alt="Imagen sobre reciclaje">
+            <img src="reciclaje6jaja.jpg" alt="Imagen sobre reciclaje">
+        </div>
+    </section>
+
+    <section id="tipos">  
+        <h2>Tipos de Reciclaje</h2>
+        
+        <div class="media-container">
+            <img src="reciclaje3jaja.jpg" alt="Imagen sobre reciclaje">
+            <img src="reciclaje4jaja.jpg" alt="Imagen sobre reciclaje">
+        </div>
+        
+        <p>Existen diferentes tipos de reciclaje que se pueden clasificar según el material. A continuación, se presentan algunos de los más comunes:</p>
+        
+        <div class="grid">  
+            <div class="card">
+                <h3><i class="fas fa-file-alt"></i> Reciclaje de Papel</h3>
+                <p>Reduce la tala de árboles y ahorra energía al utilizar menos recursos en la producción de papel nuevo. El papel reciclado puede ser utilizado en la fabricación de nuevos productos, como cajas y papel de oficina.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-wine-bottle"></i> Reciclaje de Plástico</h3>
+                <p>Minimiza la contaminación y reduce la dependencia del petróleo al reutilizar plásticos ya existentes. Los plásticos reciclados pueden convertirse en productos como muebles, ropa y materiales de construcción.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-glass-whiskey"></i> Reciclaje de Vidrio</h3>
+                <p>Puede reciclarse indefinidamente sin perder calidad, lo que reduce considerablemente la contaminación. El vidrio reciclado se utiliza en la producción de nuevos envases y botellas.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-cog"></i> Reciclaje de Metales</h3>
+                <p>Reduce la minería y la explotación de recursos naturales, además de ahorrar energía en el proceso de fabricación. Los metales reciclados son esenciales en la industria automotriz y de construcción.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-laptop"></i> Reciclaje Electrónico</h3>
+                <p>Involucra la recuperación de materiales valiosos de dispositivos electrónicos, reduciendo la cantidad de desechos peligrosos. Esto incluye metales raros y componentes que pueden ser reutilizados en nuevos productos electrónicos.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-tshirt"></i> Reciclaje de Textiles</h3>
+                <p>Implica la reutilización de ropa y otros textiles, ayudando a disminuir el impacto ambiental de la industria de la moda. Los textiles reciclados pueden ser transformados en nuevos productos como almohadas, mantas y ropa nueva.</p>
+            </div>
+        </div> 
+        
+        <div class="media-container">
+            <img src="reciclaje7jaja.jpg" alt="Imagen sobre reciclaje">
+            <img src="reciclaje8jaja.jpg" alt="Imagen sobre reciclaje">
+            <video src="Reciclajejuan.mp4" controls></video>
+        </div>
+    </section>  
+    
+    <section id="beneficios">  
+        <h2>Beneficios del Reciclaje</h2>  
+        <p>El reciclaje tiene múltiples beneficios, incluyendo:</p>
+        
+        <ul class="benefits-list">
+            <li>Reducción de la contaminación ambiental, lo que mejora la calidad del aire y del agua.</li>
+            <li>Ahorro de recursos naturales y energía, lo que contribuye a la sostenibilidad.</li>
+            <li>Creación de empleos en la industria del reciclaje, fomentando el desarrollo económico local.</li>
+            <li>Fomento de una cultura de sostenibilidad en la sociedad, educando a las futuras generaciones sobre la importancia del cuidado del medio ambiente.</li>
+            <li>Disminución de residuos en vertederos y basureros, lo que reduce la necesidad de nuevos espacios para la basura.</li>
+            <li>Conciencia pública sobre la importancia de la conservación y el uso responsable de los recursos, promoviendo un cambio de comportamiento positivo.</li>
+        </ul>
+        
+        <div class="media-container">
+            <video src="ReciclajeAldo.mp4" controls></video>
+            <img src="parrot-65_256.gif" alt="GIF animado">
+        </div>
+        
+        <p>Además, el reciclaje promueve la innovación en el diseño de productos, impulsando a las empresas a crear soluciones más sostenibles. La implementación de prácticas de reciclaje también puede generar ahorros significativos en costos operativos para las empresas.</p>
+    </section>  
+
+    <section id="video">
+        <h2>Video de Cómo Aprender a Reciclar</h2>
+        <div class="media-container">
+            <video src="Reciclaje.mp4" controls></video>
+        </div>
+        <p>Este video proporciona información valiosa sobre cómo implementar prácticas de reciclaje en tu hogar y comunidad, incluyendo consejos prácticos y ejemplos de éxito en diferentes lugares del mundo.</p>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto "RECICLAJE SOSTENIBLE"</h2>
+        <p>Si deseas más información o tienes alguna pregunta, no dudes en contactarnos a través de nuestra <a href="mailto:info@reciclajesostenible.com">correo electrónico</a>.</p>
+        <p>También puedes seguirnos en nuestras redes sociales para obtener consejos sobre reciclaje y sostenibilidad:</p>
+        
+        <div class="social-container">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/ReciclajeSostenible" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/ReciclajeSostenible" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                </a>
+                <div class="media-container">
+            <img src="collage.jpg" height="380px" alt="collage">
+        </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="apoyo">
+        <h2>Páginas de Apoyo sobre el Reciclaje</h2>
+        <p>Si deseas más información, visita los siguientes enlaces:</p>
+        
+        <ul class="support-links">
+            <li><a href="https://www.bienestar.gob.mx/sibien/index.php/sustentabilidad/20-sustentabilidad/29-reciclaje-y-reutilización">Reciclaje y Reutilización</a></li>
+            <li><a href="https://www.reyplast.pe/blog/como-promover-reciclaje-escuela/">Promoviendo el Reciclaje en las Escuelas</a></li>
+        </ul>
+        <div class="media-container">
+            <video src="todos.mp4" controls></video><video src="bloopers_sZwll9tX.mp4" controls></video>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 - Concienciación sobre el Reciclaje. Todos los derechos reservados.</p>
+        <p><small>Un planeta más limpio comienza con tus acciones</small></p>
+    </footer>
+</body>
+</html>
